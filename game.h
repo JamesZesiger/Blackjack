@@ -10,7 +10,7 @@ class Game {
         Deck deck;
         Player player;
         Player dealer;
-        void dealCard(Player& p); // deals top card to player
+        void dealCard(Player& p, Player& dealer); // deals top card to player
         void playerTurn(); //handles player actions
         void dealerTurn(); //handles dealer actions
         void determineWinner(); //compare hands and updates money

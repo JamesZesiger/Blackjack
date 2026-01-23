@@ -16,7 +16,7 @@ class Player {
         void clearHand(); // clear hand each round
         int handValue(); // calculate hand value
         bool isBust(); // check if you busted
-        bool isBlackjack(); // check for hand score of 21
+        bool hasBlackjack(); // check for hand score of 21
         void addCard(Card card);
 
         // Betting methods

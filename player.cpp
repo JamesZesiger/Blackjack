@@ -2,6 +2,8 @@
 
 Player::Player(std::vector<Card> dealtHand){
     this->hand = dealtHand;
+    this->money = 100; // Starting money
+    this->currentBet = 0;
 }
 
 // Hand Management

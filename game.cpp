@@ -3,19 +3,27 @@
 #include <string>
 
 Game::Game() {
-    Deck::shuffle(deck); //shuffles deck at start
+    this->deck = Deck();
+    Deck::shuffle(this->deck);
+    this->player = Player();
+    this->dealer = Player();
 }
 
-void Game::dealCard(Player& p) {
-    int top = 0; //keeps track of where we are in deck
-
-    if (top > 52) {
-        std::cout << "Reshuffling the deck." << std::endl;
-        Deck::shuffle(deck);
-        top = 0;
-    }
-    p.addCard(deck[top]);
-    top++;
+void Game::dealCard(Player& p,Player& d) {
+    int depth = 0;
+    for(auto it = deck.begin(); it != deck.end(); ++it){
+        if (depth&2 == 0) {
+            p.addCard(*it);
+            deck.cards.erase(it);
+        }
+        else{
+            d.addCard(*it);
+            deck.cards.erase(it);
+        }
+        depth++;
+        if (depth >2)
+            break;
+	}
 }
 
 void Game::showHands(bool showDealerHole) {
@@ -47,7 +55,7 @@ void Game::playerTurn() {
         std::cin >> action;
 
         if (action == "hit") {
-            dealCard(player);
+            dealCard(player, dealer);
             if (player.isBust()) {
                 std::cout << "You've busted!\n";
                 turnOver = true;
@@ -72,20 +80,20 @@ void Game::determineWinner() {
         std::cout << "You lose this hand!\n";
         player.loseBet();
     }
-    else if (deal.isBust()) {
+    else if (dealer.isBust()) {
         std::cout << "You win this hand!\n";
     }
     else if (playerTotal < dealerTotal) {
         std::cout << "You lose this hand!\n";
     }
     else if (playerTotal > dealerTotal) {
-        std::cout "You win this hand!\n";
+        std::cout << "You win this hand!\n";
     }
     else {
         std::cout << "You've tied this hand.\n";
     }
 
-    std::cout << "Your current money is: $:" << player.getMoney() << "\n"
+    std::cout << "Your current money is: $:" << player.getMoney() << "\n";
 }
 
 void Game::play() {
@@ -102,12 +110,9 @@ void Game::play() {
         }
         
         // inital deal
-        dealCard(player);
-        dealCard(dealer);
-        dealCard(player);
-        dealCard(dealer);
+        dealCard(player,dealer);
 
-        if (player.handBlackjack()) {
+        if (player.hasBlackjack()) {
             std::cout << "Winner winner chicken dinner!\n";
             player.winBet();
         }
@@ -121,7 +126,7 @@ void Game::play() {
         char again;
         std::cout << "Would you like to play another hand? (y/n): ";
         std::cin >> again;
-        if (cont != 'y' && cont != 'Y')
+        if (again != 'y' && again != 'Y')
             break;
 
     }

@@ -88,6 +88,7 @@ class Deck {
 		// myDeck.cards.begin(), etc.  These two lines allow us to expose that iterator.
 		std::vector<Card>::iterator begin();
 		std::vector<Card>::iterator end();
+		friend class Game;
 		
 };
 
