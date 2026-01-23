@@ -3,25 +3,73 @@
 Player::Player(std::vector<Card> dealtHand){
     this->hand = dealtHand;
 }
-std::vector<Card>& Player::getHand(){
-    return hand;
-}
 
-void Player::addHand(Card card){
+// Hand Management
+void Player::addCard(Card card){
     hand.push_back(card);
 }
 
-int Player::handValue(){
+void Player::clearHand() {
+    hand.clear();
+}
+
+int Player::handValue() {
     int total = 0;
+    int numAces = 0;
+
     for(auto& card : hand){
         int cardValue = card.getNumber();
-        if(cardValue > 10){
+        if(cardValue > 10) {
             cardValue = 10;
         }
-        if(cardValue == 1 && total + 11 <= 21){
+
+        if(cardValue == 1 && total + 11 <= 21) {
             cardValue = 11;
         }
         total += cardValue;
     }
     return total;
+}
+
+bool Player::isBust() {
+    if (handValue() > 21) {
+        return true;
+    }
+}
+
+bool Player::hasBlackjack() {
+    if (handValue() == 21) {
+        return true;
+    }
+}
+
+// Betting Methods
+bool Player::placeBet(int amount) {
+    if (amount > money || amount <= 0) {
+        return false;
+    }
+
+    currentBet = amount;
+    return true;
+}
+
+void Player::winBet() {
+    money += currentBet;
+}
+
+void Player::loseBet() {
+    money -= currentBet;
+}
+
+// Accessors
+int Player::getMoney() {
+    return money;
+}
+
+int Player::getCurrentBet() {
+    return currentBet;
+}
+
+std::vector<Card>& Player::getHand() {
+    return hand;
 }

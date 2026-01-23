@@ -17,7 +17,7 @@ class Player {
         int handValue(); // calculate hand value
         bool isBust(); // check if you busted
         bool isBlackjack(); // check for hand score of 21
-        void addHand(Card card);
+        void addCard(Card card);
 
         // Betting methods
         bool placeBet(int amount); // places a bet
