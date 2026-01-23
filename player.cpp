@@ -1,13 +1,12 @@
 #include "player.h"
 
-Player::Player(Deck dealtHand){
+Player::Player(std::vector<Card> dealtHand){
     this->hand = dealtHand;
 }
-
-Deck& Player::getHand(){
+std::vector<Card>& Player::getHand(){
     return hand;
 }
 
 void Player::addHand(Card card){
-    hand.cards.push_back(card);
+    hand.push_back(card);
 }

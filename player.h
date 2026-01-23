@@ -2,14 +2,15 @@
 #define		__H__PLAYER__
 
 #include "deck.h"
+#include <vector>
 
 class Player {
 	private:
-		Deck hand;
+		std::vector<Card> hand;
 	public:
 		Player() = default;
-		Player(Deck dealtHand);
-		Deck& getHand();
+		Player(std::vector<Card> dealtHand);
+		std::vector<Card>& getHand();
 		void addHand(Card card);
 };
 
