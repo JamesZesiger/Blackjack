@@ -12,6 +12,7 @@ class Player {
 		Player(std::vector<Card> dealtHand);
 		std::vector<Card>& getHand();
 		void addHand(Card card);
+		int handValue();
 };
 
 #endif
