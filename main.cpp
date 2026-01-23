@@ -1,8 +1,9 @@
 #include "deck.h"
+#include "game.h"
 #include <iostream>
 
 int main(int argc, char** argv){
-	char x;
+	/*char x;
 	// Create a deck
 	Deck deck;
 	// Shuffle the deck (notice the static-method call)
@@ -13,7 +14,11 @@ int main(int argc, char** argv){
 		std::cout << *it << "\t";
 	}
 	std::cout << std::endl;
-	
+	*/
+
+    Game game;
+    game.play();
+
 	return 0;
     
 
