@@ -2,27 +2,17 @@
 #define		__H__PLAYER__
 
 #include "deck.h"
+#include <vector>
 
-class player {
+class Player {
 	private:
-        int money;
-        int currentBet;
-
+		std::vector<Card> hand;
 	public:
-        // Constructor
-		player();
-
-        // money/bets interactions
-        void placeBet(int amount);
-        void winBet(); //add money
-        void loseBet(); // reduce money
-        int getMoney();
-        int getCurrentBet();
-
-        // hand actions
-		void addCard();
-        void clearHand();
-        int getHandValue();
-        bool isBust();
-
+		Player() = default;
+		Player(std::vector<Card> dealtHand);
+		std::vector<Card>& getHand();
+		void addHand(Card card);
+		int handValue();
 };
+
+#endif
