@@ -13,7 +13,7 @@ class Game {
         void dealCard(Player& p); // deals top card to player
         void playerTurn(); //handles player actions
         void dealerTurn(); //handles dealer actions
-        void determine winner(); //compare hands and updates money
+        void determineWinner(); //compare hands and updates money
         void showHands(bool showDealerHole); //displays hands, can show hole card
 
     public:
