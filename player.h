@@ -3,10 +3,14 @@
 
 #include "deck.h"
 
-class player {
+class Player {
 	private:
 		Deck hand;
 	public:
-		player();
-		addCard()
+		Player() = default;
+		Player(Deck dealtHand);
+		Deck& getHand();
+		void addHand(Card card);
 };
+
+#endif
