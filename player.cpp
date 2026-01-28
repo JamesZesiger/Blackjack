@@ -37,12 +37,16 @@ bool Player::isBust() {
     if (handValue() > 21) {
         return true;
     }
+
+    return false;
 }
 
 bool Player::hasBlackjack() {
     if (handValue() == 21) {
         return true;
     }
+
+    return false;
 }
 
 // Betting Methods
