@@ -9,21 +9,17 @@ Game::Game() {
     this->dealer = Player();
 }
 
-void Game::dealCard(Player& p,Player& d) {
+void Game::dealCard(Player& p) {
     int depth = 0;
-    for(auto it = deck.begin(); it != deck.end(); ++it){
-        if (depth&2 == 0) {
-            p.addCard(*it);
-            deck.cards.erase(it);
-        }
-        else{
-            d.addCard(*it);
-            deck.cards.erase(it);
-        }
-        depth++;
-        if (depth >2)
-            break;
-	}
+    
+    if (depth >= 52) {
+        Deck::shuffle(deck);
+        depth = 0;
+    }
+
+    p.addCard(deck[depth]);
+    
+    depth++;
 }
 
 void Game::showHands(bool showDealerHole) {
@@ -55,7 +51,7 @@ void Game::playerTurn() {
         std::cin >> action;
 
         if (action == "hit") {
-            dealCard(player, dealer);
+            dealCard(player);
             if (player.isBust()) {
                 std::cout << "You've busted!\n";
                 turnOver = true;
@@ -67,6 +63,12 @@ void Game::playerTurn() {
         else {
             std::cout << "Invalid action, please try again.\n";
         }
+    }
+}
+
+void Game::dealerTurn() {
+    while (dealer.handValue() < 17 || dealer.handValue() < player.handValue()) {
+        dealCard(dealer);
     }
 }
 
@@ -110,7 +112,7 @@ void Game::play() {
         }
         
         // inital deal
-        dealCard(player,dealer);
+        dealCard(player);
 
         if (player.hasBlackjack()) {
             std::cout << "Winner winner chicken dinner!\n";

@@ -38,6 +38,11 @@ Card& Deck::operator[](size_t index){
 	return cards[index];
 }
 
+// added to fix compile issue we had 1/28/2026 in class
+int Card::getNumber() {
+    return number;
+}
+
 // Print out a representation of a Card
 //std::ostream& operator<<(std::ostream& os, const Card& card){
 //	std::string suit = "♠";
