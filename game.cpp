@@ -10,16 +10,14 @@ Game::Game() {
 }
 
 void Game::dealCard(Player& p) {
-    int depth = 0;
-    
-    if (depth >= 52) {
+    if (deck.getNumberOfCards() == 0) {
+        std::cout << "The deck is out of cards!\n";
+        deck = Deck();
         Deck::shuffle(deck);
-        depth = 0;
     }
-
-    p.addCard(deck[depth]);
-    
-    depth++;
+    Card dealtCard = deck[deck.getNumberOfCards() - 1];
+    deck.pop_back();
+    p.addCard(dealtCard);
 }
 
 void Game::showHands(bool showDealerHole) {
@@ -84,12 +82,17 @@ void Game::determineWinner() {
     }
     else if (dealer.isBust()) {
         std::cout << "You win this hand!\n";
+        player.winBet();
+        player.winBet();
     }
     else if (playerTotal < dealerTotal) {
         std::cout << "You lose this hand!\n";
+        player.loseBet();
     }
     else if (playerTotal > dealerTotal) {
         std::cout << "You win this hand!\n";
+        player.winBet();
+        player.winBet();
     }
     else {
         std::cout << "You've tied this hand.\n";
@@ -113,10 +116,12 @@ void Game::play() {
         
         // inital deal
         dealCard(player);
-
+        dealCard(dealer);
+        dealCard(player);
+        dealCard(dealer);
+        
         if (player.hasBlackjack()) {
             std::cout << "Winner winner chicken dinner!\n";
-            player.winBet();
         }
 
         playerTurn();

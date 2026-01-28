@@ -91,3 +91,10 @@ std::vector<Card>::iterator Deck::begin(){
 std::vector<Card>::iterator Deck::end(){
 	return cards.end();
 }
+
+int Deck::getNumberOfCards() {
+	return cards.size();
+}
+void Deck::pop_back() {
+	cards.pop_back();
+}

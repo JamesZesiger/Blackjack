@@ -68,6 +68,8 @@ class Deck {
 		// to use them, so here we are!
 		std::vector<Card> cards;
 
+		
+
 	public:
 		// Constructor
 		Deck();
@@ -88,8 +90,10 @@ class Deck {
 		// myDeck.cards.begin(), etc.  These two lines allow us to expose that iterator.
 		std::vector<Card>::iterator begin();
 		std::vector<Card>::iterator end();
+		void pop_back();
+		int getNumberOfCards();
+
 		friend class Game;
-		
 };
 
 #endif

@@ -11,8 +11,7 @@ class Player {
         int currentBet;
 
 	public:
-		Player() = default;
-		Player(std::vector<Card> dealtHand);
+		Player();
         void clearHand(); // clear hand each round
         int handValue(); // calculate hand value
         bool isBust(); // check if you busted

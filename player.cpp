@@ -1,7 +1,7 @@
 #include "player.h"
+#include "deck.h"
 
-Player::Player(std::vector<Card> dealtHand){
-    this->hand = dealtHand;
+Player::Player(){
     this->money = 100; // Starting money
     this->currentBet = 0;
 }
