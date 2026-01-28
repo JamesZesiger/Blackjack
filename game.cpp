@@ -44,7 +44,7 @@ void Game::playerTurn() {
     bool turnOver = false;
     while (!turnOver) {
         showHands(false);
-        std::cout << "What will you do (hot/stand): ";
+        std::cout << "What will you do (hit/stand): ";
         std::string action;
         std::cin >> action;
 
