@@ -83,7 +83,6 @@ void Game::determineWinner() {
     else if (dealer.isBust()) {
         std::cout << "You win this hand!\n";
         player.winBet();
-        player.winBet();
     }
     else if (playerTotal < dealerTotal) {
         std::cout << "You lose this hand!\n";
@@ -92,13 +91,13 @@ void Game::determineWinner() {
     else if (playerTotal > dealerTotal) {
         std::cout << "You win this hand!\n";
         player.winBet();
-        player.winBet();
     }
     else {
         std::cout << "You've tied this hand.\n";
+        player.returnBet();
     }
 
-    std::cout << "Your current money is: $:" << player.getMoney() << "\n";
+    std::cout << "Your current money is: $" << player.getMoney() << "\n";
 }
 
 void Game::play() {
@@ -122,6 +121,7 @@ void Game::play() {
         
         if (player.hasBlackjack()) {
             std::cout << "Winner winner chicken dinner!\n";
+            break;
         }
 
         playerTurn();

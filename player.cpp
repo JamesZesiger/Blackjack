@@ -56,15 +56,21 @@ bool Player::placeBet(int amount) {
     }
 
     currentBet = amount;
+    money -= amount;
     return true;
 }
 
+// win/lose/draw
 void Player::winBet() {
-    money += currentBet;
+    money += currentBet * 2;
 }
 
 void Player::loseBet() {
-    money -= currentBet;
+    //money -= currentBet;
+}
+
+void Player::returnBet() {
+    money += currentBet;
 }
 
 // Accessors

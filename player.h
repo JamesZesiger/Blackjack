@@ -22,6 +22,7 @@ class Player {
         bool placeBet(int amount); // places a bet
         void winBet(); // player wins
         void loseBet(); // player loses
+        void returnBet(); // player draws with dealer
 
         // Accessors
         int getMoney(); // access current amount of money
