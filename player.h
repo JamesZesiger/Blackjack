@@ -23,6 +23,8 @@ class Player {
         void winBet(); // player wins
         void loseBet(); // player loses
         void returnBet(); // player draws with dealer
+        bool canDoubleDown(); // checks to see if player can double down
+        bool doubleDown(); // logic for doulbing down
 
         // Accessors
         int getMoney(); // access current amount of money

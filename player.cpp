@@ -60,6 +60,23 @@ bool Player::placeBet(int amount) {
     return true;
 }
 
+bool Player::doubleDown() {
+    if (!canDoubleDown()) {
+        return false;
+    }
+
+    money -= currentBet;
+    currentBet *= 2;
+    return true;
+}
+
+bool Player::canDoubleDown() {
+    if (money >= currentBet && hand.size() == 2) {
+        return true;
+    }
+    return false;
+}
+
 // win/lose/draw
 void Player::winBet() {
     money += currentBet * 2;

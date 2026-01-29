@@ -59,9 +59,15 @@ void Game::playerTurn() {
             turnOver = true;
         }
         else if (action == "double") {
-            dealCard(player);
-            // need to add something to take bet again
-            turnOver = true;
+            if (player.canDoubleDown()) {
+                player.doubleDown();
+                dealCard(player);
+                // need to add something to take bet again?
+                turnOver = true;
+            }
+            else {
+                std::cout << "You don't have enough money to double down.\n";
+            }
         }
         else {
             std::cout << "Invalid action, please try again.\n";
