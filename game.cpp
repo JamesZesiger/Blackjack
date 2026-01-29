@@ -44,7 +44,7 @@ void Game::playerTurn() {
     bool turnOver = false;
     while (!turnOver) {
         showHands(false);
-        std::cout << "What will you do (hit/stand): ";
+        std::cout << "What will you do (hit/stand/double down): ";
         std::string action;
         std::cin >> action;
 
@@ -56,6 +56,11 @@ void Game::playerTurn() {
             }
         }
         else if (action == "stand") {
+            turnOver = true;
+        }
+        else if (action == "double") {
+            dealCard(player);
+            // need to add something to take bet again
             turnOver = true;
         }
         else {
