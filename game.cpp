@@ -62,7 +62,6 @@ void Game::playerTurn() {
             if (player.canDoubleDown()) {
                 player.doubleDown();
                 dealCard(player);
-                // need to add something to take bet again?
                 turnOver = true;
             }
             else {
