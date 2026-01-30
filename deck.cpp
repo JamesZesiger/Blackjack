@@ -1,3 +1,8 @@
+/*
+Names: James Zesiger, Jared Bradley
+Date: 1/30/26
+*/
+
 #include "deck.h"
 #include <algorithm>
 #include <random>
@@ -44,27 +49,27 @@ int Card::getNumber() {
 }
 
 // Print out a representation of a Card
-//std::ostream& operator<<(std::ostream& os, const Card& card){
-//	std::string suit = "♠";
-//	if(card.suit == HEART){
-//		suit = "♥";
-//	} else if (card.suit == DIAMOND){
-//		suit = "♦";
-//	} else if (card.suit == CLUB){
-//		suit = "♣";
-//	}
+std::ostream& operator<<(std::ostream& os, const Card& card){
+	std::string suit = "♠";
+	if(card.suit == HEART){
+		suit = "♥";
+	} else if (card.suit == DIAMOND){
+		suit = "♦";
+	} else if (card.suit == CLUB){
+		suit = "♣";
+	}
 	// cannot see suit on my machine
-	std::ostream& operator<<(std::ostream & os, const Card & card) {
-		std::string suit = "S";
-		if (card.suit == HEART) {
-			suit = "H";
-		}
-		else if (card.suit == DIAMOND) {
-			suit = "D";
-		}
-		else if (card.suit == CLUB) {
-			suit = "C";
-		}
+	// std::ostream& operator<<(std::ostream & os, const Card & card) {
+	// 	std::string suit = "S";
+	// 	if (card.suit == HEART) {
+	// 		suit = "H";
+	// 	}
+	// 	else if (card.suit == DIAMOND) {
+	// 		suit = "D";
+	// 	}
+	// 	else if (card.suit == CLUB) {
+	// 		suit = "C";
+	// 	}
 
 	
 	os << suit;

@@ -1,3 +1,8 @@
+/*
+Names: James Zesiger, Jared Bradley
+Date: 1/30/26
+*/
+
 #include "game.h"
 #include <iostream>
 #include <string>

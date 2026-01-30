@@ -1,3 +1,8 @@
+/*
+Names: James Zesiger, Jared Bradley
+Date: 1/30/26
+*/
+
 #ifndef		__H__PLAYER__
 #define		__H__PLAYER__
 
