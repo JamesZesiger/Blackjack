@@ -46,8 +46,15 @@ void Game::playerTurn() {
         showHands(false);
         std::cout << "What will you do (hit/stand/double down): ";
         std::string action;
-        std::cin >> action;
-
+        std::getline(std::cin, action);
+        for (char &c : action) {
+        if (c >= 'A' && c <= 'Z') {
+          
+          	// Convert uppercase to lowercase
+          	// by adding 32
+            c += 32;
+            }
+        }
         if (action == "hit") {
             dealCard(player);
             if (player.isBust()) {
@@ -58,7 +65,7 @@ void Game::playerTurn() {
         else if (action == "stand") {
             turnOver = true;
         }
-        else if (action == "double") {
+        else if (action == "double" || action == "double down") {
             if (player.canDoubleDown()) {
                 player.doubleDown();
                 dealCard(player);
@@ -150,5 +157,4 @@ void Game::play() {
 
     std::cout << "Game over. You've left the table with: $" << player.getMoney() << "\n";
 }
-
 
