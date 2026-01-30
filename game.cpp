@@ -1,6 +1,7 @@
 #include "game.h"
 #include <iostream>
 #include <string>
+#include <limits>
 
 Game::Game() {
     this->deck = Deck();
@@ -47,14 +48,6 @@ void Game::playerTurn() {
         std::cout << "What will you do (hit/stand/double down): ";
         std::string action;
         std::getline(std::cin, action);
-        for (char &c : action) {
-        if (c >= 'A' && c <= 'Z') {
-          
-          	// Convert uppercase to lowercase
-          	// by adding 32
-            c += 32;
-            }
-        }
         if (action == "hit") {
             dealCard(player);
             if (player.isBust()) {
@@ -125,6 +118,7 @@ void Game::play() {
         int bet;
         std::cout << "You have $" << player.getMoney() << ". Please enter a bet: ";
         std::cin >> bet;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // clear input buffer
 
         if (!player.placeBet(bet)) {
             std::cout << "Invalid bet.\n";
