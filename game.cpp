@@ -137,7 +137,6 @@ void Game::play() {
         
         if (player.hasBlackjack()) {
             std::cout << "Winner winner chicken dinner!\n";
-            break;
         }
 
         playerTurn();
